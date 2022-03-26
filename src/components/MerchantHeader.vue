@@ -1,18 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { shop } from '../models/shop';
+
+import DetailsAnnouncement from './DetailsAnnouncement.vue';
+
+const showDetails = ref(false);
 </script>
 
 <template>
+    <Teleport to="body">
+        <DetailsAnnouncement :show="showDetails" @close="showDetails = false">
+        </DetailsAnnouncement>
+    </Teleport>
+
     <div class="flex flex-row bg-blue-400 text-white px-4 py-4">
         <img class="aspect-square object-cover w-24 h-24" :src="shop.logoUrl" />
 
         <div class="px-4">
-            <span
-                class="border-red-400 border-2 bg-red-400 rounded-md font-semibold"
-            >
-                品牌
-            </span>
-            <span class="px-2">{{ shop.name }}</span>
+            <span class="redBadge"> 品牌 </span>
+            <span>{{ shop.name }}</span>
 
             <div class="flex flex-col mt-6">
                 <div class="text-xs">
@@ -21,11 +27,7 @@ import { shop } from '../models/shop';
                     <span>{{ shop.diversityTime }} 分钟送达</span>
                 </div>
                 <div class="text-xs">
-                    <span
-                        class="border-red-400 bg-red-400 rounded-md font-semibold"
-                    >
-                        满
-                    </span>
+                    <span class="redBadge"> 满 </span>
                     <span>在线支付满 35 减 8</span>
                 </div>
             </div>
@@ -33,20 +35,20 @@ import { shop } from '../models/shop';
 
         <div class="relative">
             <span
-                class="absolute bottom-4 text-xs border-red-400 bg-red-400 rounded-md font-semibold px-2 whitespace-nowrap"
+                class="absolute bottom-4 text-xs redBadge"
+                @click="showDetails = !showDetails"
             >
                 5 个
                 <i class="arrow right"></i>
             </span>
         </div>
     </div>
-    <div class="flex flex-row bg-blue-300 text-white p-1">
-        <span
-            class="border-red-400 bg-red-400 rounded-md font-semibold whitespace-nowrap"
-        >
-            公告
-        </span>
-        <div class="truncate px-2">{{ shop.descripton }}</div>
+    <div
+        class="flex flex-row bg-blue-300 text-white p-1"
+        @click="showDetails = !showDetails"
+    >
+        <span class="redBadge"> 公告 </span>
+        <div class="truncate px-2">{{ shop.description }}</div>
         <div>
             <i class="arrow right"></i>
         </div>
@@ -54,6 +56,9 @@ import { shop } from '../models/shop';
 </template>
 
 <style scoped>
+.redBadge {
+    @apply bg-red-400 rounded-md font-semibold whitespace-nowrap mr-1 px-2;
+}
 .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
