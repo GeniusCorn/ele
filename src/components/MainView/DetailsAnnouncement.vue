@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-import { shop } from '../models/shop';
-import StarRating from './StarRating.vue';
+import { shop } from '../../models/shop';
+import StarRating from '../utils/StarRating.vue';
 
 const props = defineProps<{
     show: boolean;
