@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { shop } from '../models/shop';
+import { shop } from '../../models/shop';
 
 import DetailsAnnouncement from './DetailsAnnouncement.vue';
 
@@ -18,7 +18,7 @@ const showDetails = ref(false);
 
         <div class="px-4">
             <span class="redBadge"> 品牌 </span>
-            <span>{{ shop.name }}</span>
+            <span class="text-lg">{{ shop.name }}</span>
 
             <div class="flex flex-col mt-6">
                 <div class="text-xs">
