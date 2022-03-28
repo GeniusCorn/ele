@@ -7,13 +7,13 @@ const props = defineProps<commodity>();
 </script>
 
 <template>
-    <div class="flex flex-row border-b-2 px-1 py-4">
+    <div class="relative grid grid-cols-3 border-b-4 px-1 py-2">
         <img
             :src="props.img"
             :alt="props.name"
-            class="object-cover w-20 h-20"
+            class="object-cover w-20 h-20 col-span-1"
         />
-        <div class="px-2">
+        <div class="col-span-2">
             <div class="text-lg">
                 {{ props.name }}
             </div>
@@ -23,7 +23,7 @@ const props = defineProps<commodity>();
             <span class="text-sm text-red-400"> 好评 {{ props.praise }} </span>
             <div class="text-sm">￥{{ props.price }}</div>
         </div>
-        <div class="flex flex-col-reverse">
+        <div class="absolute bottom-4 right-2">
             <CountItem></CountItem>
         </div>
     </div>

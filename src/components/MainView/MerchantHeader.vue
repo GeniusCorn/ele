@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { shop } from '../../models/shop';
 
 import DetailsAnnouncement from './DetailsAnnouncement.vue';
+import NavigateBar from './NavigateBar.vue';
 
 const showDetails = ref(false);
 </script>
@@ -13,14 +14,20 @@ const showDetails = ref(false);
         </DetailsAnnouncement>
     </Teleport>
 
-    <div class="flex flex-row bg-blue-400 text-white px-4 py-4">
-        <img class="aspect-square object-cover w-24 h-24" :src="shop.logoUrl" />
+    <div class="grid grid-cols-5 bg-blue-400 text-white px-4 py-4">
+        <div class="col-span-1">
+            <img
+                class="aspect-square object-cover w-26"
+                :src="shop.logoUrl"
+                :alt="shop.logoUrl"
+            />
+        </div>
 
-        <div class="px-4">
+        <div class="col-span-3 px-4">
             <span class="redBadge"> 品牌 </span>
             <span class="text-lg">{{ shop.name }}</span>
 
-            <div class="flex flex-col mt-6">
+            <div class="mt-2">
                 <div class="text-xs">
                     <span>{{ shop.shipper }}</span
                     >/
@@ -33,7 +40,7 @@ const showDetails = ref(false);
             </div>
         </div>
 
-        <div class="relative">
+        <div class="relative col-span-1">
             <span
                 class="absolute bottom-4 text-xs redBadge"
                 @click="showDetails = !showDetails"
@@ -53,6 +60,7 @@ const showDetails = ref(false);
             <i class="arrow right"></i>
         </div>
     </div>
+    <NavigateBar></NavigateBar>
 </template>
 
 <style scoped>
