@@ -34,15 +34,17 @@ const scrollTo = (event: Event) => {
     const eventTargetHTML = (event.target as HTMLLIElement).innerHTML;
     commodityListRefs.value.forEach((element: HTMLElement) => {
         if (eventTargetHTML === element.innerHTML) {
-            scrollCommodity.scrollToElement(element, 300, 0, -22);
+            scrollCommodity.scrollToElement(element, 500, 0, -22);
         }
     });
 };
+
+// TODO: 右侧菜单吸顶
 </script>
 
 <template>
     <div class="grid grid-cols-4 bg-gray-100 h-screen">
-        <ul ref="tagRef" class="col-span-1 px-2 text-sm">
+        <ul ref="tagRef" class="col-span-1 text-xl">
             <!-- 该空 div 为包裹 scroll 的容器 -->
             <div>
                 <li
@@ -70,6 +72,7 @@ const scrollTo = (event: Event) => {
                             commodityListRefs.push(el);
                         }
                     "
+                        class="text-xl mb-4"
                     >
                         {{ tag }}
                     </div>

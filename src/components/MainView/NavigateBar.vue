@@ -10,6 +10,6 @@
 
 <style scoped>
 .item {
-    @apply text-base;
+    @apply text-xl;
 }
 </style>

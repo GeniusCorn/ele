@@ -17,7 +17,7 @@ const showDetails = ref(false);
     <div class="grid grid-cols-5 bg-blue-400 text-white px-4 py-4">
         <div class="col-span-1">
             <img
-                class="aspect-square object-cover w-26"
+                class="aspect-square object-cover"
                 :src="shop.logoUrl"
                 :alt="shop.logoUrl"
             />
