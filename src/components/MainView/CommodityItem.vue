@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import CountItem from './CountItem.vue';
 
-import { commodity } from '../../models/commodity';
+import { Commodity } from '../../models/Commodity';
 
-const props = defineProps<commodity>();
+const props = defineProps<Commodity>();
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const props = defineProps<commodity>();
         />
         <div class="col-span-2">
             <div class="text-lg">
-                {{ props.name }}
+                {{ props.title }}
             </div>
             <span class="text-sm text-red-400">
                 月售 {{ props.monthly_sale }}
@@ -24,7 +24,7 @@ const props = defineProps<commodity>();
             <div class="text-sm">￥{{ props.price }}</div>
         </div>
         <div class="absolute bottom-4 right-2">
-            <CountItem></CountItem>
+            <CountItem :title="props.title" :price="props.price"></CountItem>
         </div>
     </div>
 </template>

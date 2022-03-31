@@ -4,8 +4,8 @@ import BScroll from '@better-scroll/core';
 // import { BScrollConstructor } from '@better-scroll/core/dist/types/BScroll';
 import CommodityItem from './CommodityItem.vue';
 
-import { commodityItemList } from '../../models/commodity';
-import tagList from '../../models/tag';
+import { commodityItemList } from '../../models/Commodity';
+import TagList from '../../models/TagList';
 
 // 左右两侧滑动
 const tagRef = ref();
@@ -48,7 +48,7 @@ const scrollTo = (event: Event) => {
             <!-- 该空 div 为包裹 scroll 的容器 -->
             <div>
                 <li
-                    v-for="(item, index) in tagList"
+                    v-for="(item, index) in TagList"
                     :key="index"
                     :ref="
                         (el: any) => {
@@ -65,7 +65,7 @@ const scrollTo = (event: Event) => {
         <div ref="commodityRef" class="col-span-3 overflow-hidden">
             <!-- 该空 div 为包裹 scroll 的容器，添加足够大的底部内边距保证 scroll 内容显示完全 -->
             <div class="pt-4 pb-80">
-                <div v-for="(tag, tagIndex) in tagList" :key="tagIndex">
+                <div v-for="(tag, tagIndex) in TagList" :key="tagIndex">
                     <div
                         :ref="
                         (el: any) => {
@@ -84,6 +84,7 @@ const scrollTo = (event: Event) => {
                         <div v-if="commodity.tag === tag">
                             <CommodityItem
                                 :name="commodity.name"
+                                :title="commodity.title"
                                 :monthly_sale="commodity.monthly_sale"
                                 :praise="commodity.praise"
                                 :price="commodity.price"

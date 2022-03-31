@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { shop } from '../../models/shop';
+import { merchant } from '../../models/Merchant';
 import StarRating from '../utils/StarRating.vue';
 
 const props = defineProps<{
@@ -11,9 +11,9 @@ defineEmits(['close']);
 
 <template>
     <div v-if="props.show" class="detailsContainer" @click="$emit('close')">
-        <span class="">{{ shop.name }}</span>
+        <span class="">{{ merchant.name }}</span>
         <span>
-            <StarRating :score="shop.score"></StarRating>
+            <StarRating :score="merchant.score"></StarRating>
         </span>
         <br />
         <span>优惠信息</span>
@@ -41,13 +41,13 @@ defineEmits(['close']);
         </div>
         <br />
         <div>商家公告</div>
-        <span>{{ shop.description }}</span>
+        <span>{{ merchant.description }}</span>
     </div>
 </template>
 
 <style scoped>
 .detailsContainer {
-    @apply grid grid-cols-1 justify-items-center bg-slate-400 text-white p-4 opacity-90 absolute inset-0;
+    @apply grid grid-cols-1 justify-items-center bg-slate-400 text-white p-4 opacity-90 absolute inset-0 z-50;
 }
 .redBadge {
     @apply bg-red-400 rounded-md font-semibold mr-1 px-2 whitespace-nowrap;
