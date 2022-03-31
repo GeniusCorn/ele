@@ -43,6 +43,6 @@ watch(count, () => {
 
 <style scoped>
 .btn {
-    @apply rounded-full outline outline-2 w-4 h-4 flex items-center justify-center;
+    @apply rounded-full outline outline-2 w-6 h-6 flex items-center justify-center;
 }
 </style>
