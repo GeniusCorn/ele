@@ -11,11 +11,11 @@ import TagList from '../../models/TagList';
 const tagRef = ref();
 const commodityRef = ref();
 
-let scrollTag: any;
+// let scrollTag: any;
 let scrollCommodity: any;
 onMounted(() => {
     // TODO: 由于样本数据不足，尚未进行测试
-    scrollTag = new BScroll(tagRef.value, {
+    const scrollTag = new BScroll(tagRef.value, {
         probeType: 3,
         click: true,
     });
@@ -26,7 +26,7 @@ onMounted(() => {
     });
 });
 
-// 点击左侧菜单，右侧菜单跳转对应标签
+// * 点击左侧菜单，右侧菜单跳转对应标签
 const tagListRefs = ref<any>([]);
 const commodityListRefs = ref<any>([]);
 
