@@ -5,7 +5,9 @@ import image1 from '../assets/images/mae-mu-t-0rX27Xiy0-unsplash.jpg';
 export default interface Merchant {
     logoUrl: string;
     name: string;
-    score: number;
+    overallRating: number;
+    serviceAttitude: number;
+    productRating: number;
     shipper: string;
     diversityTime: string;
     description: string;
@@ -17,7 +19,9 @@ export default interface Merchant {
 export const merchant: Merchant = reactive({
     logoUrl: image1,
     name: '城里粥坊',
-    score: 4,
+    overallRating: 4.6,
+    serviceAttitude: 4.5,
+    productRating: 4.7,
     shipper: '蜂鸟专送',
     diversityTime: '30',
     description:

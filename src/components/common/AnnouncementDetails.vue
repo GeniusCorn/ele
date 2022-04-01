@@ -13,7 +13,7 @@ defineEmits(['close']);
     <div v-if="props.show" class="detailsContainer" @click="$emit('close')">
         <span class="">{{ merchant.name }}</span>
         <span>
-            <StarRating :score="merchant.score"></StarRating>
+            <StarRating :score="merchant.overallRating"></StarRating>
         </span>
         <br />
         <span>优惠信息</span>
