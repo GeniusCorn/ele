@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { merchant } from '../../models/Merchant';
-import StarRating from '../utils/StarRating.vue';
+import StarRating from './StarRating.vue';
 
 const props = defineProps<{
     show: boolean;

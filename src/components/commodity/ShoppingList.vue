@@ -23,7 +23,7 @@ const store = useShoppingCart();
                     <div class="col-span-7">
                         {{ item.title }}
                     </div>
-                    <div class="justify-self-center col-span-3">
+                    <div class="justify-self-center col-span-3 pr-4">
                         ￥{{ item.price * item.count }}
                     </div>
                     <CountItem

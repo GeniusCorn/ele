@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { merchant } from '../../models/Merchant';
 
 import AnnouncementDetails from './AnnouncementDetails.vue';
-import NavigateBar from './NavigateBar.vue';
 
 const showDetails = ref(false);
 </script>
@@ -60,7 +59,6 @@ const showDetails = ref(false);
             <i class="arrow right"></i>
         </div>
     </div>
-    <NavigateBar></NavigateBar>
 </template>
 
 <style scoped>
