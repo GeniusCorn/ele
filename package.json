@@ -11,11 +11,12 @@
         "@better-scroll/core": "^2.4.2",
         "@vicons/material": "^0.12.0",
         "@vue/compiler-sfc": "^3.2.31",
-        "pinia": "^2.0.12",
+        "pinia": "^2.0.13",
         "vue": "^3.2.31",
         "vue-router": "^4.0.14"
     },
     "devDependencies": {
+        "@tailwindcss/forms": "^0.5.0",
         "@typescript-eslint/eslint-plugin": "^5.17.0",
         "@typescript-eslint/parser": "^5.17.0",
         "@vitejs/plugin-vue": "^2.3.1",
