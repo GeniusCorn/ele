@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import BScroll from '@better-scroll/core';
 // import { BScrollConstructor } from '@better-scroll/core/dist/types/BScroll';
@@ -63,7 +63,7 @@ const scrollTo = (event: Event) => {
         </ul>
 
         <div ref="commodityRef" class="col-span-3 overflow-hidden">
-            <!-- 该空 div 为包裹 scroll 的容器，添加足够大的底部内边距保证 scroll 内容显示完全 -->
+            <!-- 该 div 为包裹 scroll 的容器，添加足够大的底部内边距保证 scroll 内容显示完全 -->
             <div class="pt-4 pb-80">
                 <div v-for="(tag, tagIndex) in TagList" :key="tagIndex">
                     <div
@@ -83,12 +83,12 @@ const scrollTo = (event: Event) => {
                     >
                         <div v-if="commodity.tag === tag">
                             <CommodityItem
-                                :name="commodity.name"
-                                :title="commodity.title"
+                                :img="commodity.img"
                                 :monthly_sale="commodity.monthly_sale"
+                                :name="commodity.name"
                                 :praise="commodity.praise"
                                 :price="commodity.price"
-                                :img="commodity.img"
+                                :title="commodity.title"
                                 class="bg-white"
                             ></CommodityItem>
                         </div>

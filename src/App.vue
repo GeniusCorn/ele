@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import MainView from './views/MainView.vue';
+import MerchantHeader from './components/common/MerchantHeader.vue';
+import NavigateBar from './components/common/NavigateBar.vue';
 </script>
 
 <template>
     <div class="container mx-auto">
-        <MainView></MainView>
+        <MerchantHeader></MerchantHeader>
+        <NavigateBar></NavigateBar>
+        <router-view></router-view>
     </div>
 </template>
 
