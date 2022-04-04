@@ -20,9 +20,12 @@ if (halfStar >= 0.5) {
 <template>
     <div class="flex flex-row">
         <div v-for="n in totalStars" :key="n">
-            <StarRound class="h-4"></StarRound>
+            <StarRound class="h-4 text-orange-300"></StarRound>
         </div>
-        <StarHalfRound v-if="halfStar >= 0.5" class="h-4"></StarHalfRound>
+        <StarHalfRound
+            v-if="halfStar >= 0.5"
+            class="h-4 text-orange-300"
+        ></StarHalfRound>
         <div v-for="n in borderStars" :key="n">
             <StarBorderRound class="h-4"></StarBorderRound>
         </div>
