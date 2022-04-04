@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useShoppingCart } from '../../store/index';
+import { useStore } from '../../store/index';
 import CountItem from './CountItem.vue';
 
 const props = defineProps<{
@@ -8,7 +8,7 @@ const props = defineProps<{
 
 defineEmits(['close']);
 
-const store = useShoppingCart();
+const store = useStore();
 </script>
 
 <template>

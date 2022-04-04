@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia';
-import shoppingList from '../models/shopping';
+import ShoppingList from '../models/ShoppingList';
 
 // * 购物车列表 store
-export const useShoppingCart = defineStore('main', {
+export const useStore = defineStore('main', {
     state: () => ({
-        list: [] as shoppingList[],
+        list: [] as ShoppingList[],
+        collect: false,
     }),
     getters: {
-        getList(): shoppingList[] {
+        getList(): ShoppingList[] {
             return this.list;
         },
         getCommodityByTitle: (state) => (title: string) =>
@@ -25,6 +26,9 @@ export const useShoppingCart = defineStore('main', {
                 totalPrice += element.price * element.count;
             });
             return totalPrice;
+        },
+        getCollect(): boolean {
+            return this.collect;
         },
     },
     actions: {
@@ -61,7 +65,10 @@ export const useShoppingCart = defineStore('main', {
         emptyList() {
             this.list = [];
         },
+        toggleCollect() {
+            this.collect = !this.collect;
+        },
     },
 });
 
-export default useShoppingCart;
+export default useStore;

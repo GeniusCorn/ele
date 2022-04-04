@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { merchant } from '../../models/Merchant';
-import { useShoppingCart } from '../../store/index';
+import { useStore } from '../../store/index';
 
 const props = defineProps<{
     show: boolean;
@@ -9,7 +9,7 @@ const props = defineProps<{
 
 defineEmits(['close']);
 
-const store = useShoppingCart();
+const store = useStore();
 
 const totalPrice = computed<number>(
     () => store.getTotalPrice + merchant.deliveryFee,

@@ -3,10 +3,10 @@ import { ShoppingBagOutlined } from '@vicons/material';
 import { computed, ref, watch } from 'vue';
 import ShoppingList from './ShoppingList.vue';
 import PaymentPanel from './PaymentPanel.vue';
-import { useShoppingCart } from '../../store/index';
+import { useStore } from '../../store/index';
 import { merchant } from '../../models/Merchant';
 
-const store = useShoppingCart();
+const store = useStore();
 
 const showList = ref(false);
 const showPayment = ref(false);
