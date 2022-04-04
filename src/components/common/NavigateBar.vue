@@ -8,8 +8,7 @@
         <router-link to="/comments">
             <span class="item">评论</span>
         </router-link>
-
-        <span class="item">商家</span>
+        <router-link to="/merchant"><span class="item">商家</span></router-link>
     </div>
 </template>
 

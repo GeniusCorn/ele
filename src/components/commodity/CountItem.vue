@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, computed } from 'vue';
 
-import { useShoppingCart } from '../../store/index';
+import { useStore } from '../../store/index';
 
 const props = defineProps<{
     title: string;
     price: number;
 }>();
 
-const store = useShoppingCart();
+const store = useStore();
 
 const isInvisible = ref<boolean>(true);
 const count = computed<number>(
