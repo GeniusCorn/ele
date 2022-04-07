@@ -1,6 +1,34 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import BScroll from '@better-scroll/core';
+import { onMounted, ref } from 'vue';
 import RatingContent from '../components/merchant/RatingContent.vue';
+import AnnouncemetContent from '../components/merchant/AnnouncemetContent.vue';
+import ActualView from '../components/merchant/ActualView.vue';
+import MerchantInformation from '../components/merchant/MerchantInformation.vue';
+
+const viewRef = ref();
+onMounted(() => {
+    BScroll(viewRef.value, {
+        probeType: 1,
+        click: true,
+    });
+});
 </script>
+
 <template>
-    <RatingContent></RatingContent>
+    <div ref="viewRef" class="h-screen overflow-hidden">
+        <!--包裹 scroll 的容器-->
+        <div class="pb-96">
+            <RatingContent></RatingContent>
+            <AnnouncemetContent></AnnouncemetContent>
+            <ActualView></ActualView>
+            <MerchantInformation></MerchantInformation>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+.height {
+    min-height: 1px;
+}
+</style>
