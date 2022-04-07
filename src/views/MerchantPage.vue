@@ -16,12 +16,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <div ref="viewRef" class="h-screen overflow-hidden">
+    <div ref="viewRef" class="h-screen overflow-hidden bg-slate-200">
         <!--包裹 scroll 的容器-->
         <div class="pb-96">
             <RatingContent></RatingContent>
+            <br />
             <AnnouncemetContent></AnnouncemetContent>
+            <br />
             <ActualView></ActualView>
+            <br />
             <MerchantInformation></MerchantInformation>
         </div>
     </div>

@@ -14,7 +14,7 @@ const collectMerchant = () => {
 </script>
 
 <template>
-    <div class="p-6 flex justify-between">
+    <div class="p-6 flex justify-between bg-white">
         <div>
             <div class="text-xl">
                 {{ merchant.name }}
@@ -35,7 +35,7 @@ const collectMerchant = () => {
         </div>
     </div>
 
-    <div class="px-6">
+    <div class="px-6 bg-white">
         <div class="border-t-2 py-4 grid grid-cols-3 text-center">
             <div class="border-r-2">
                 起送价

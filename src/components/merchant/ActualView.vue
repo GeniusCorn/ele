@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="p-6">
+    <div class="p-6 bg-white">
         <div>商家实景</div>
         <div ref="listRef" class="overflow-hidden w-screen py-2">
             <ul class="inline-block whitespace-nowrap">

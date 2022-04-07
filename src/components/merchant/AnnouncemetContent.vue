@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { merchant } from '../../models/Merchant';
 </script>
 
 <template>
-    <div class="p-6">
+    <div class="p-6 bg-white">
         <div>公告与活动</div>
         <div class="p-2 text-red-500">
             {{ merchant.description }}
