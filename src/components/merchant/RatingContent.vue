@@ -37,14 +37,14 @@ const collectMerchant = () => {
 
     <div class="px-6">
         <div class="border-t-2 py-4 grid grid-cols-3 text-center">
-            <div>
+            <div class="border-r-2">
                 起送价
                 <div class="text-2xl">
                     {{ merchant.startingDeliveryPrice }}
                     <span class="text-base">元</span>
                 </div>
             </div>
-            <div>
+            <div class="border-r-2">
                 商家配送
                 <div class="text-2xl">
                     {{ merchant.deliveryFee }}

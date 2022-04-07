@@ -105,7 +105,7 @@ const changeToSpitList = () => {
         </div>
 
         <div ref="listRef" class="overflow-hidden h-screen">
-            <!--            该 div 为包裹 scroll 的容器            -->
+            <!-- 该 div 为包裹 scroll 的容器 -->
             <div class="pt-4 pb-96">
                 <div class="pb-32">
                     <div v-for="(comment, index) in list" :key="index">
