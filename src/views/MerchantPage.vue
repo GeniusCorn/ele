@@ -16,9 +16,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <div ref="viewRef" class="h-screen overflow-hidden bg-slate-200">
+    <div ref="viewRef" class="overflow-hidden bg-slate-200 h-4/5">
         <!--包裹 scroll 的容器-->
-        <div class="pb-96">
+        <div>
             <RatingContent></RatingContent>
             <br />
             <AnnouncemetContent></AnnouncemetContent>

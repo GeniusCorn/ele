@@ -1,16 +1,7 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref } from 'vue';
-import BScroll from '@better-scroll/core';
+import { computed, ref } from 'vue';
 import { commentList } from '../../models/Comment';
 import CommentContent from './CommentContent.vue';
-
-// 滚动列表
-const listRef = ref();
-onMounted(() => {
-    BScroll(listRef.value, {
-        probeType: 3,
-    });
-});
 
 const listLength = computed(() => commentList.length);
 
@@ -68,7 +59,7 @@ const changeToSpitList = () => {
 
 <template>
     <div class="bg-white">
-        <div class="flex flex-row bg-white">
+        <div class="flex flex-row">
             <div
                 :class="{ active: isCommentList }"
                 class="tag"
@@ -104,37 +95,40 @@ const changeToSpitList = () => {
             </label>
         </div>
 
-        <div ref="listRef" class="overflow-hidden h-screen">
-            <!-- 该 div 为包裹 scroll 的容器 -->
-            <div class="pt-4 pb-96">
-                <div class="pb-32">
-                    <div v-for="(comment, index) in list" :key="index">
-                        <div v-if="isOnlyReadComments">
-                            <div v-if="comment.comment.length !== 0">
-                                <CommentContent
-                                    :avator="comment.userAvatar"
-                                    :comment="comment.comment"
-                                    :name="comment.userName"
-                                    :rating="comment.rating"
-                                    :tag="comment.tag"
-                                    :time="comment.time"
-                                ></CommentContent>
-                            </div>
-                        </div>
-                        <div v-else>
-                            <CommentContent
-                                :avator="comment.userAvatar"
-                                :comment="comment.comment"
-                                :name="comment.userName"
-                                :rating="comment.rating"
-                                :tag="comment.tag"
-                                :time="comment.time"
-                            ></CommentContent>
-                        </div>
-                    </div>
+        <div v-for="(comment, index) in list" :key="index" class="min-h-0">
+            <div v-if="isOnlyReadComments">
+                <div v-if="comment.comment.length !== 0">
+                    <CommentContent
+                        :avator="comment.userAvatar"
+                        :comment="comment.comment"
+                        :name="comment.userName"
+                        :rating="comment.rating"
+                        :tag="comment.tag"
+                        :time="comment.time"
+                    ></CommentContent>
                 </div>
             </div>
+            <div v-else>
+                <CommentContent
+                    :avator="comment.userAvatar"
+                    :comment="comment.comment"
+                    :name="comment.userName"
+                    :rating="comment.rating"
+                    :tag="comment.tag"
+                    :time="comment.time"
+                ></CommentContent>
+            </div>
         </div>
+        <!--        <CommentContent-->
+        <!--            v-for="(comment, index) in list"-->
+        <!--            :key="index"-->
+        <!--            :avator="comment.userAvatar"-->
+        <!--            :comment="comment.comment"-->
+        <!--            :name="comment.userName"-->
+        <!--            :rating="comment.rating"-->
+        <!--            :tag="comment.tag"-->
+        <!--            :time="comment.time"-->
+        <!--        ></CommentContent>-->
     </div>
 </template>
 

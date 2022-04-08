@@ -62,9 +62,9 @@ const scrollTo = (event: Event) => {
             </div>
         </ul>
 
-        <div ref="commodityRef" class="col-span-3 overflow-hidden">
+        <div ref="commodityRef" class="col-span-3 overflow-hidden h-4/5">
             <!-- 该 div 为包裹 scroll 的容器，添加足够大的底部内边距保证 scroll 内容显示完全 -->
-            <div class="pt-4 pb-80">
+            <div class="pt-4 pb-24">
                 <div v-for="(tag, tagIndex) in TagList" :key="tagIndex">
                     <div
                         :ref="
