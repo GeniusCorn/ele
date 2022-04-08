@@ -1,13 +1,30 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { commentList } from '../../models/Comment';
+import Comment, { commentList } from '../../models/Comment';
 import CommentContent from './CommentContent.vue';
 
-const listLength = computed(() => commentList.length);
+const props = defineProps<{
+    title?: string;
+}>();
+
+const computedList = ref<Comment[]>([]);
+const tempList = ref<Comment[]>([]);
+if (props.title) {
+    commentList.forEach((element) => {
+        if (element.tag.includes(props.title as string)) {
+            tempList.value.push(element);
+        }
+    });
+    computedList.value = tempList.value;
+} else {
+    computedList.value = commentList;
+}
+
+const listLength = computed(() => computedList.value.length);
 
 const satisfactionListLength = computed(() => {
     let count = 0;
-    commentList.forEach((element) => {
+    computedList.value.forEach((element) => {
         if (element.rating > 3.5) {
             count += 1;
         }
@@ -17,7 +34,7 @@ const satisfactionListLength = computed(() => {
 
 const spitListLength = computed(() => {
     let count = 0;
-    commentList.forEach((element) => {
+    computedList.value.forEach((element) => {
         if (element.rating < 3.5) {
             count += 1;
         }
@@ -25,7 +42,7 @@ const spitListLength = computed(() => {
     return count;
 });
 
-const list = ref(commentList);
+const list = ref(computedList.value);
 
 const isCommentList = ref(true);
 const isSatisFactionList = ref(false);
@@ -37,7 +54,7 @@ const changeToCommentList = () => {
     isSatisFactionList.value = false;
     isSpitList.value = false;
 
-    list.value = commentList;
+    list.value = computedList.value;
 };
 
 const changToSatisFactionList = () => {
@@ -45,7 +62,7 @@ const changToSatisFactionList = () => {
     isSatisFactionList.value = true;
     isSpitList.value = false;
 
-    list.value = commentList.filter((element) => element.rating > 3.5);
+    list.value = computedList.value.filter((element) => element.rating > 3.5);
 };
 
 const changeToSpitList = () => {
@@ -53,7 +70,7 @@ const changeToSpitList = () => {
     isSatisFactionList.value = false;
     isSpitList.value = true;
 
-    list.value = commentList.filter((element) => element.rating < 3.5);
+    list.value = computedList.value.filter((element) => element.rating < 3.5);
 };
 </script>
 
