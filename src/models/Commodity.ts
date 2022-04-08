@@ -14,6 +14,7 @@ export interface Commodity {
     praise: number;
     price: number;
     img: string;
+    description: string;
 }
 
 // * 模拟商家商品数据
@@ -25,6 +26,7 @@ export const stewedTofuWithBabyVegetables: Commodity = {
     praise: 92,
     price: 17,
     img: img1,
+    description: '我是娃娃菜炖豆腐',
 };
 
 export const handTornCabbage: Commodity = {
@@ -35,6 +37,7 @@ export const handTornCabbage: Commodity = {
     praise: 100,
     price: 16,
     img: img2,
+    description: '我是手撕包菜',
 };
 
 export const crispyGoldenFish: Commodity = {
@@ -45,6 +48,7 @@ export const crispyGoldenFish: Commodity = {
     praise: 100,
     price: 11,
     img: img3,
+    description: '我是香酥黄金鱼',
 };
 
 export const eightTreasurePickle: Commodity = {
@@ -55,6 +59,7 @@ export const eightTreasurePickle: Commodity = {
     praise: 100,
     price: 4,
     img: img4,
+    description: '我是八宝酱菜',
 };
 
 export const slapCucumber: Commodity = {
@@ -65,6 +70,7 @@ export const slapCucumber: Commodity = {
     praise: 100,
     price: 9,
     img: img5,
+    description: '我是拍黄瓜',
 };
 
 export const orangeJuice: Commodity = {
@@ -75,6 +81,7 @@ export const orangeJuice: Commodity = {
     praise: 87,
     price: 7,
     img: img6,
+    description: '我是 100% NFC 橙汁',
 };
 
 export const mangoMix: Commodity = {
@@ -85,6 +92,7 @@ export const mangoMix: Commodity = {
     praise: 87,
     price: 7,
     img: img7,
+    description: '我是 100% NFC 芒果混合汁',
 };
 
 export const commodityItemList: Commodity[] = [
