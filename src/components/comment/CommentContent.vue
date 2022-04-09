@@ -33,14 +33,11 @@ const name = computed(() => {
 </script>
 
 <template>
-    <div class="flex flex-row ml-6 border-b-2 pb-4 m-8">
-        <div>
-            <Icon color="rgb(96, 165, 250)" size="42">
-                <PeopleAltFilled
-                    class="border-2 rounded-full"
-                ></PeopleAltFilled>
-            </Icon>
-        </div>
+    <div class="flex flex-row">
+        <Icon class="ml-8" color="rgb(96, 165, 250)" size="42">
+            <PeopleAltFilled class="border-2 rounded-full"></PeopleAltFilled>
+        </Icon>
+
         <div class="ml-4">
             <div class="grid grid-cols-2 w-fit">
                 <div>
@@ -76,4 +73,5 @@ const name = computed(() => {
             </div>
         </div>
     </div>
+    <hr class="mx-8 my-4" />
 </template>

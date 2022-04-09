@@ -1,19 +1,21 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>
 
 <template>
-    <div class="grid grid-cols-3 justify-items-center my-2">
+    <div class="grid grid-cols-3 justify-items-center my-2 h-fit">
         <router-link to="/">
-            <span class="item">商品</span>
+            <div class="item">商品</div>
         </router-link>
         <router-link to="/comments">
-            <span class="item">评论</span>
+            <div class="item">评论</div>
         </router-link>
-        <router-link to="/merchant"><span class="item">商家</span></router-link>
+        <router-link to="/merchant">
+            <div class="item">商家</div>
+        </router-link>
     </div>
 </template>
 
 <style scoped>
 .item {
-    @apply text-xl;
+    @apply text-lg text-center;
 }
 </style>

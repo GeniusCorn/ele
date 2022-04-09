@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue';
 import { merchant } from '../../models/Merchant';
 
@@ -13,12 +13,12 @@ const showDetails = ref(false);
         </AnnouncementDetails>
     </Teleport>
 
-    <div class="grid grid-cols-5 bg-blue-400 text-white px-4 py-4">
+    <div class="grid grid-cols-5 bg-blue-400 text-white px-4 py-4 h-fit">
         <div class="col-span-1">
             <img
-                class="aspect-square object-cover"
-                :src="merchant.logoUrl"
                 :alt="merchant.logoUrl"
+                :src="merchant.logoUrl"
+                class="aspect-square object-cover"
             />
         </div>
 
@@ -65,6 +65,7 @@ const showDetails = ref(false);
 .redBadge {
     @apply bg-red-400 rounded-md font-semibold whitespace-nowrap mr-1 px-2;
 }
+
 .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
