@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ShoppingBagOutlined } from '@vicons/material';
 import { computed, ref, watch } from 'vue';
 import ShoppingList from './ShoppingList.vue';
 import PaymentPanel from './PaymentPanel.vue';
-import { useStore } from '../../store/index';
+import { useStore } from '../../store';
 import { merchant } from '../../models/Merchant';
 
 const store = useStore();
@@ -51,12 +51,14 @@ watch(totalCount, () => {
             <ShoppingBagOutlined
                 class="h-14 absolute bottom-6 left-4 bg-blue-400 rounded-full"
             ></ShoppingBagOutlined>
-            <div
-                v-show="store.getTotalCount > 0"
-                class="absolute bg-red-400 rounded-full w-6 text-center left-12 bottom-14"
-            >
-                {{ totalCount }}
-            </div>
+            <Transition name="slide-up">
+                <div
+                    v-show="store.getTotalCount > 0"
+                    class="absolute bg-red-400 rounded-full w-6 text-center left-12 bottom-14"
+                >
+                    {{ totalCount }}
+                </div>
+            </Transition>
         </div>
         <div class="col-span-1 relative text-center" @click="toggleList">
             <div
@@ -86,3 +88,20 @@ watch(totalCount, () => {
         </button>
     </div>
 </template>
+
+<style scoped>
+.slide-up-enter-active,
+.slide-up-leave-active {
+    transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+    opacity: 0;
+    transform: translateY(-30px);
+}
+</style>
