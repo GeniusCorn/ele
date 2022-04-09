@@ -10,7 +10,11 @@ import NavigateBar from './components/common/NavigateBar.vue';
             <NavigateBar></NavigateBar>
         </div>
         <div class="h-screen">
-            <router-view></router-view>
+            <router-view v-slot="{ Component }">
+                <transition name="fade">
+                    <Component :is="Component"></Component>
+                </transition>
+            </router-view>
         </div>
     </div>
 </template>
@@ -18,5 +22,15 @@ import NavigateBar from './components/common/NavigateBar.vue';
 <style>
 html {
     overflow: hidden;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>
