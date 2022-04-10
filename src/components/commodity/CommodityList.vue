@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import BScroll from '@better-scroll/core';
 // import { BScrollConstructor } from '@better-scroll/core/dist/types/BScroll';
 import CommodityItem from './CommodityItem.vue';
@@ -11,11 +11,11 @@ import TagList from '../../models/TagList';
 const tagRef = ref();
 const commodityRef = ref();
 
-// let scrollTag: any;
+let scrollTag: any;
 let scrollCommodity: any;
 onMounted(() => {
     // TODO: 由于样本数据不足，尚未进行测试
-    const scrollTag = new BScroll(tagRef.value, {
+    scrollTag = new BScroll(tagRef.value, {
         probeType: 3,
         click: true,
     });
@@ -26,12 +26,22 @@ onMounted(() => {
     });
 });
 
+onBeforeUnmount(() => {
+    scrollTag.destroy();
+    scrollCommodity.destroy();
+});
+
 // * 点击左侧菜单，右侧菜单跳转对应标签
 const tagListRefs = ref<any>([]);
 const commodityListRefs = ref<any>([]);
 
 const scrollTo = (event: Event) => {
+    // * 手动刷新 scroll，解决路由切换后该功能失效
+    scrollTag.refresh();
+    scrollCommodity.refresh();
+
     const eventTargetHTML = (event.target as HTMLLIElement).innerHTML;
+
     commodityListRefs.value.forEach((element: HTMLElement) => {
         if (eventTargetHTML === element.innerHTML) {
             scrollCommodity.scrollToElement(element, 500, 0, -22);
