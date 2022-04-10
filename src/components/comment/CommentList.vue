@@ -1,30 +1,20 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-import Comment, { commentList } from '../../models/Comment';
+import { computed, reactive, ref } from 'vue';
 import CommentContent from './CommentContent.vue';
+import Comment, { commentList } from '../../models/Comment';
 
 const props = defineProps<{
     title?: string;
 }>();
 
+const rawList = computed<Comment[]>(() => commentList);
 const computedList = ref<Comment[]>([]);
-const tempList = ref<Comment[]>([]);
-if (props.title) {
-    commentList.forEach((element) => {
-        if (element.tag.includes(props.title as string)) {
-            tempList.value.push(element);
-        }
-    });
-    computedList.value = tempList.value;
-} else {
-    computedList.value = commentList;
-}
 
-const listLength = computed(() => computedList.value.length);
+const listLength = computed(() => rawList.value.length);
 
 const satisfactionListLength = computed(() => {
     let count = 0;
-    computedList.value.forEach((element) => {
+    rawList.value.forEach((element) => {
         if (element.rating > 3.5) {
             count += 1;
         }
@@ -34,7 +24,7 @@ const satisfactionListLength = computed(() => {
 
 const spitListLength = computed(() => {
     let count = 0;
-    computedList.value.forEach((element) => {
+    rawList.value.forEach((element) => {
         if (element.rating < 3.5) {
             count += 1;
         }
@@ -42,59 +32,69 @@ const spitListLength = computed(() => {
     return count;
 });
 
-const list = ref(computedList.value);
+if (props.title) {
+    rawList.value.forEach((element) => {
+        if (element.tag.includes(props.title as string)) {
+            computedList.value.push(element);
+        }
+    });
+} else {
+    computedList.value = commentList;
+}
 
-const isCommentList = ref(true);
-const isSatisFactionList = ref(false);
-const isSpitList = ref(false);
-const isOnlyReadComments = ref<boolean>(false);
+const listType = reactive({
+    all: true,
+    satIsFaction: false,
+    spit: false,
+});
 
-const changeToCommentList = () => {
-    isCommentList.value = true;
-    isSatisFactionList.value = false;
-    isSpitList.value = false;
-
-    list.value = computedList.value;
+const toggleList = (type: string) => {
+    if (type === 'all') {
+        listType.all = true;
+        listType.satIsFaction = false;
+        listType.spit = false;
+        computedList.value = rawList.value;
+    } else if (type === 'satIsFaction') {
+        listType.all = false;
+        listType.satIsFaction = true;
+        listType.spit = false;
+        computedList.value = rawList.value.filter(
+            (element) => element.rating > 3.5,
+        );
+    } else {
+        listType.all = false;
+        listType.satIsFaction = false;
+        listType.spit = true;
+        computedList.value = rawList.value.filter(
+            (element) => element.rating < 3.5,
+        );
+    }
 };
 
-const changToSatisFactionList = () => {
-    isCommentList.value = false;
-    isSatisFactionList.value = true;
-    isSpitList.value = false;
-
-    list.value = computedList.value.filter((element) => element.rating > 3.5);
-};
-
-const changeToSpitList = () => {
-    isCommentList.value = false;
-    isSatisFactionList.value = false;
-    isSpitList.value = true;
-
-    list.value = computedList.value.filter((element) => element.rating < 3.5);
-};
+const isOnlyReadContent = ref<boolean>(false);
 </script>
 
 <template>
     <div class="bg-white">
         <div class="flex flex-row">
             <div
-                :class="{ active: isCommentList }"
+                :class="{ active: listType.all }"
                 class="tag"
-                @click="changeToCommentList"
+                @click="toggleList('all')"
             >
                 全部 {{ listLength }}
             </div>
             <div
-                :class="{ active: isSatisFactionList }"
+                :class="{ active: listType.satIsFaction }"
                 class="tag"
-                @click="changToSatisFactionList"
+                @click="toggleList('satIsFaction')"
             >
                 满意 {{ satisfactionListLength }}
             </div>
             <div
-                :class="{ active: isSpitList }"
+                :class="{ active: listType.spit }"
                 class="tag"
-                @click="changeToSpitList"
+                @click="toggleList('spit')"
             >
                 吐槽 {{ spitListLength }}
             </div>
@@ -103,7 +103,7 @@ const changeToSpitList = () => {
         <div class="mx-8 my-2 py-6 border-y">
             <label>
                 <input
-                    v-model="isOnlyReadComments"
+                    v-model="isOnlyReadContent"
                     class="h-6 w-6 rounded-full"
                     style="color: rgb(96, 165, 250)"
                     type="checkbox"
@@ -112,8 +112,8 @@ const changeToSpitList = () => {
             </label>
         </div>
 
-        <div v-for="(comment, index) in list" :key="index" class="min-h-0">
-            <div v-if="isOnlyReadComments">
+        <div v-for="comment in computedList" :key="comment" class="min-h-0">
+            <div v-if="isOnlyReadContent">
                 <div v-if="comment.comment.length !== 0">
                     <CommentContent
                         :avator="comment.userAvatar"
@@ -136,16 +136,6 @@ const changeToSpitList = () => {
                 ></CommentContent>
             </div>
         </div>
-        <!--        <CommentContent-->
-        <!--            v-for="(comment, index) in list"-->
-        <!--            :key="index"-->
-        <!--            :avator="comment.userAvatar"-->
-        <!--            :comment="comment.comment"-->
-        <!--            :name="comment.userName"-->
-        <!--            :rating="comment.rating"-->
-        <!--            :tag="comment.tag"-->
-        <!--            :time="comment.time"-->
-        <!--        ></CommentContent>-->
     </div>
 </template>
 
