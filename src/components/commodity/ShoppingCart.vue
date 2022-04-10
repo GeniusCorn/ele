@@ -45,7 +45,7 @@ watch(totalCount, () => {
     </Teleport>
 
     <div
-        class="grid grid-cols-6 fixed inset-x-0 bottom-0 text-white bg-blue-400 h-14 z-10"
+        class="grid grid-cols-6 absolute inset-x-0 bottom-0 text-white bg-blue-400 h-14 z-50"
     >
         <div class="col-span-1 mt-2" @click="toggleList">
             <ShoppingBagOutlined
