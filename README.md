@@ -1,18 +1,18 @@
 # vue-ele
 
-English | [Simplified Chinese](README_zh-cn.md)
+English | [简体中文](README_zh-cn.md)
 
 ## Table of Contents
 
 -   [vue-ele](#vue-ele)
-    -   [Table of Contents](#Table of Contents)
+    -   [Table of Contents](#table-of-contents)
     -   [Background](#Background)
     -   [Installation](#Installation)
     -   [Usage](#Usage)
-        -   [Product Page](#Product Page)
-        -   [Comment Page](#Comment Page)
-        -   [Merchant Page](#Merchant Page)
-    -   [Online Demo](#Online Demo)
+        -   [Product Page](#product-page)
+        -   [Comment Page](#comment-page)
+        -   [Merchant Page](#merchant-page)
+    -   [Online Demo](#online-demo)
     -   [Maintainer](#Maintainer)
     -   [LICENSE](#LICENSE)
 
