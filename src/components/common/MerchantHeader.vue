@@ -75,6 +75,5 @@ const showDetails = ref(false);
 
 .right {
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
 }
 </style>

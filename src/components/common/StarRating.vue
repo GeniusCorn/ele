@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const totalStars = Math.trunc(props.score);
 const halfStar = props.score - totalStars;
-let borderStars;
+let borderStars: number;
 if (halfStar >= 0.5) {
     borderStars = Math.trunc(5 - props.score);
 } else {

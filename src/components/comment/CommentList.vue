@@ -10,28 +10,6 @@ const props = defineProps<{
 const rawList = computed<Comment[]>(() => commentList);
 const computedList = ref<Comment[]>([]);
 
-const listLength = computed(() => rawList.value.length);
-
-const satisfactionListLength = computed(() => {
-    let count = 0;
-    rawList.value.forEach((element) => {
-        if (element.rating > 3.5) {
-            count += 1;
-        }
-    });
-    return count;
-});
-
-const spitListLength = computed(() => {
-    let count = 0;
-    rawList.value.forEach((element) => {
-        if (element.rating < 3.5) {
-            count += 1;
-        }
-    });
-    return count;
-});
-
 if (props.title) {
     rawList.value.forEach((element) => {
         if (element.tag.includes(props.title as string)) {
@@ -42,30 +20,55 @@ if (props.title) {
     computedList.value = commentList;
 }
 
+const tempList = computedList;
+
+const listLength = computed(() => tempList.value.length);
+
+const satisfactionListLength = computed(() => {
+    let count = 0;
+    tempList.value.forEach((element) => {
+        if (element.rating > 3.5) {
+            count += 1;
+        }
+    });
+    return count;
+});
+
+const spitListLength = computed(() => {
+    let count = 0;
+    tempList.value.forEach((element) => {
+        if (element.rating < 3.5) {
+            count += 1;
+        }
+    });
+    return count;
+});
+
 const listType = reactive({
     all: true,
     satIsFaction: false,
     spit: false,
 });
 
+const showList = ref(computedList.value);
 const toggleList = (type: string) => {
     if (type === 'all') {
         listType.all = true;
         listType.satIsFaction = false;
         listType.spit = false;
-        computedList.value = rawList.value;
+        showList.value = computedList.value;
     } else if (type === 'satIsFaction') {
         listType.all = false;
         listType.satIsFaction = true;
         listType.spit = false;
-        computedList.value = rawList.value.filter(
+        showList.value = computedList.value.filter(
             (element) => element.rating > 3.5,
         );
-    } else {
+    } else if (type === 'spit') {
         listType.all = false;
         listType.satIsFaction = false;
         listType.spit = true;
-        computedList.value = rawList.value.filter(
+        showList.value = computedList.value.filter(
             (element) => element.rating < 3.5,
         );
     }
@@ -112,7 +115,7 @@ const isOnlyReadContent = ref<boolean>(false);
             </label>
         </div>
 
-        <div v-for="comment in computedList" :key="comment" class="min-h-0">
+        <div v-for="comment in showList" :key="comment.comment" class="min-h-0">
             <div v-if="isOnlyReadContent">
                 <div v-if="comment.comment.length !== 0">
                     <CommentContent

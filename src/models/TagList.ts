@@ -1,8 +1,8 @@
-import { commodityItemList } from './Commodity';
+import Commodity, { commodityItemList } from './Commodity';
 
 const TagList = new Set<string>();
 
-commodityItemList.forEach((item) => {
+commodityItemList.forEach((item: Commodity) => {
     TagList.add(item.tag as string);
 });
 

@@ -11,7 +11,6 @@ const imgList = reactive([img1, img2, img3, img4]);
 const listRef = ref();
 
 onMounted(() => {
-    console.log(listRef.value);
     BScroll(listRef.value, {
         scrollX: true,
         probeType: 3,

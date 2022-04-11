@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import StarRating from '../common/StarRating.vue';
 import { merchant } from '../../models/Merchant';
 import { commentList } from '../../models/Comment';
-import { useStore } from '../../store/index';
+import { useStore } from '../../store';
 
 const store = useStore();
 const isCollect = computed(() => store.collect);

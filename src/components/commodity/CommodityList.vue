@@ -54,23 +54,24 @@ const scrollTo = (event: Event) => {
 
 <template>
     <div class="grid grid-cols-4 bg-gray-100 h-screen">
-        <ul ref="tagRef" class="col-span-1 text-xl">
+        <div ref="tagRef" class="col-span-1 text-xl">
             <!-- 该空 div 为包裹 scroll 的容器 -->
             <div>
-                <li
+                <div
                     v-for="(item, index) in TagList"
                     :key="index"
                     :ref="
-                        (el: any) => {
+                        (el) => {
                             tagListRefs.push(el);
                         }
                     "
+                    class="tag"
                     @click="scrollTo"
                 >
                     {{ item }}
-                </li>
+                </div>
             </div>
-        </ul>
+        </div>
 
         <div ref="commodityRef" class="col-span-3 overflow-hidden h-4/5">
             <!-- 该 div 为包裹 scroll 的容器，添加足够大的底部内边距保证 scroll 内容显示完全 -->
@@ -78,10 +79,10 @@ const scrollTo = (event: Event) => {
                 <div v-for="(tag, tagIndex) in TagList" :key="tagIndex">
                     <div
                         :ref="
-                        (el: any) => {
-                            commodityListRefs.push(el);
-                        }
-                    "
+                            (el) => {
+                                commodityListRefs.push(el);
+                            }
+                        "
                         class="text-xl mb-4"
                     >
                         {{ tag }}
@@ -110,7 +111,7 @@ const scrollTo = (event: Event) => {
 </template>
 
 <style scoped>
-li {
+.tag {
     @apply m-2 py-2 border-b-2;
 }
 </style>

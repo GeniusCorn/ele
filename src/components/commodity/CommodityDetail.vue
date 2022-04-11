@@ -89,8 +89,8 @@ watch(show, async () => {
                     </div>
                     <br />
 
-                    <div class="p-6 bg-white">
-                        <div class="font-semibold">商品评价</div>
+                    <div class="bg-white">
+                        <div class="font-semibold p-6">商品评价</div>
                         <CommentList :title="props.title"></CommentList>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import CommodityList from '../components/commodity/CommodityList.vue';
 import ShoppingCart from '../components/commodity/ShoppingCart.vue';
 </script>

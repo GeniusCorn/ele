@@ -13,7 +13,6 @@ onMounted(() => {
         click: true,
         observeDOM: true,
     });
-    console.log(viewRef.value);
 });
 </script>
 <template>

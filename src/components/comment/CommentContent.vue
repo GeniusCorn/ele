@@ -56,7 +56,7 @@ const name = computed(() => {
             <br />
             <div class="pr-12">{{ props.comment }}</div>
             <br />
-            <div class="flex flex-row pr-4">
+            <div class="flex flex-row pr-8">
                 <Icon color="rgb(96, 165, 250)" size="30">
                     <ThumbUpOffAltRound></ThumbUpOffAltRound>
                 </Icon>
