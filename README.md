@@ -4,17 +4,17 @@ English | [简体中文](README_zh-cn.md)
 
 ## Table of Contents
 
--   [vue-ele](#vue-ele)
-    -   [Table of Contents](#table-of-contents)
-    -   [Background](#Background)
-    -   [Installation](#Installation)
-    -   [Usage](#Usage)
-        -   [Product Page](#product-page)
-        -   [Comment Page](#comment-page)
-        -   [Merchant Page](#merchant-page)
-    -   [Online Demo](#online-demo)
-    -   [Maintainer](#Maintainer)
-    -   [LICENSE](#LICENSE)
+- [vue-ele](#vue-ele)
+  - [Table of Contents](#table-of-contents)
+  - [Background](#background)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Product Page](#product-page)
+    - [Comment Page](#comment-page)
+    - [Merchant Page](#merchant-page)
+  - [Online Demo](#online-demo)
+  - [Maintainer](#maintainer)
+  - [LICENSE](#license)
 
 ## Background
 
