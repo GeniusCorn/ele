@@ -4,11 +4,11 @@ FROM node:alpine as builder
 WORKDIR /code
 
 # 单独分离 package.json，为了安装依赖可最大化依赖缓存
-ADD package.json /code/
+# ADD package.json yarn.lock /code/
 
 ADD . /code
 
-RUN yarn && yarn build
+RUN yarn && yarn vite build
 
 # 二阶段的 nginx 镜像
 FROM nginx:alpine
